@@ -2,7 +2,7 @@ import { useState } from "react";
 
 export default function App() {
     const [bright, setBright]=useState("darken");
-    const [full, fullImage] = useState(1);
+    const [full, fullImage] = useState(0);
 
     const images = [
         {src: "images/pic1.jpg", alt: "Closeup of a human eye"},
@@ -15,7 +15,6 @@ export default function App() {
     function brightness(){
         if(bright === "darken"){
             setBright("lighten");
-
         }else{
             setBright("darken");
         }
