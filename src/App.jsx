@@ -1,4 +1,22 @@
+import { useState } from "react";
+
 export default function App() {
+    const [bright, setBright]=useState("darken");
+    const images = [
+        "images/pic1.jpg",
+        "images/pic2.jpg",
+        "images/pic3.jpg",
+        "images/pic4.jpg",
+        "images/pic5.jpg"
+    ]
+    const alts = {
+        pic1: "Closeup of a human eye",
+        pic2: "Rock that looks like a wave",
+        pic3: "Purple and white pansies",
+        pic4: "Section of wall from a pharoah's tomb",
+        pic5: "Large moth on a leaf"
+    }
+    /*
     const images=[
         <img key="pic1" src="images/pic1.jpg" alt="Closeup of a human eye" />,
         <img key="pic2" src="images/pic2.jpg" alt="Rock that looks like a wave" />,
@@ -6,6 +24,17 @@ export default function App() {
         <img key="pic4" src="images/pic4.jpg" alt="Section of wall from a pharoah's tomb" />,
         <img key="pic5" src="images/pic5.jpg" alt="Large moth on a leaf" />
     ];
+    */
+
+    function brightness(){
+        if(bright === "darken"){
+            setBright("lighten");
+
+        }else{
+            setBright("darken");
+        }
+    }
+
     return (
       <>
         <h1>Image gallery example</h1>
@@ -16,9 +45,11 @@ export default function App() {
             alt="Closeup of a human eye"
           />
           <div className="overlay"></div>
-          <button className="dark">Darken</button>
+          <button className="dark" onClick={brightness}>{bright}</button>
         </div>
-        <div className="thumb-bar"></div>
+        <div className="thumb-bar">
+            
+        </div>
       </>
     );
   }
