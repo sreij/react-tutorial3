@@ -2,30 +2,16 @@ import { useState } from "react";
 
 export default function App() {
     const [bright, setBright]=useState("darken");
-    const [full, fullImage] = useState("image/pic1.jpg");
-    /*
+    const [full, fullImage] = useState(1);
+
     const images = [
-        "images/pic1.jpg",
-        "images/pic2.jpg",
-        "images/pic3.jpg",
-        "images/pic4.jpg",
-        "images/pic5.jpg"
-    ]
-    const alts = {
-        pic1: "Closeup of a human eye",
-        pic2: "Rock that looks like a wave",
-        pic3: "Purple and white pansies",
-        pic4: "Section of wall from a pharoah's tomb",
-        pic5: "Large moth on a leaf"
-    }
-    */
-    const images=[
-        <img key="pic1" src="images/pic1.jpg" alt="Closeup of a human eye" onClick={() => fullImage("pic1")} />,
-        <img key="pic2" src="images/pic2.jpg" alt="Rock that looks like a wave" onClick={() => fullImage("pic2")} />,
-        <img key="pic3" src="images/pic3.jpg" alt="Purple and white pansies" onClick={() => fullImage("pic3")} />,
-        <img key="pic4" src="images/pic4.jpg" alt="Section of wall from a pharoah's tomb" onClick={() => fullImage("pic4")} />,
-        <img key="pic5" src="images/pic5.jpg" alt="Large moth on a leaf" onClick={() => fullImage("pic5")} />
+        {src: "images/pic1.jpg", alt: "Closeup of a human eye"},
+        {src: "images/pic2.jpg", alt: "Rock that looks like a wave"},
+        {src: "images/pic3.jpg", alt: "Purple and white pansies"},
+        {src: "images/pic4.jpg", alt: "Section of wall from a pharoah's tomb"},
+        {src: "images/pic5.jpg", alt: "Large moth on a leaf"}
     ];
+
     function brightness(){
         if(bright === "darken"){
             setBright("lighten");
@@ -41,14 +27,18 @@ export default function App() {
         <div className="full-img">
           <img
             className="displayed-img"
-            src="images/pic1.jpg"
-            alt="Closeup of a human eye"
+            src={images[full].src}
+            alt={images[full].alt}
           />
           <div className="overlay"></div>
           <button className="dark" onClick={brightness}>{bright}</button>
         </div>
         <div className="thumb-bar">
-            {images}
+            {images.map((image,index)=>{
+                return(
+                    <img key={image} src={image.src} alt={image.alt} onClick={()=>fullImage(index)}/>
+                );
+            })}
         </div>
       </>
     );
