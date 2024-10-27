@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function App() {
-    const [bright, setBright]=useState("darken");
+    const [bright, setBright]=useState("Darken");
     const [full, fullImage] = useState(0);
 
     const images = [
@@ -13,10 +13,10 @@ export default function App() {
     ];
 
     function brightness(){
-        if(bright === "darken"){
-            setBright("lighten");
+        if(bright === "Darken"){
+            setBright("Lighten");
         }else{
-            setBright("darken");
+            setBright("Darken");
         }
     }
 
