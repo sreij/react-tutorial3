@@ -3,6 +3,7 @@ import { useState } from "react";
 export default function App() {
     const [bright, setBright]=useState("Darken");
     const [full, fullImage] = useState(0);
+    const overlay=document.querySelector(".overlay")
 
     const images = [
         {src: "images/pic1.jpg", alt: "Closeup of a human eye"},
@@ -15,8 +16,10 @@ export default function App() {
     function brightness(){
         if(bright === "Darken"){
             setBright("Lighten");
+            overlay.style.backgroundColor='rgba(0,0,0,0.5)';
         }else{
             setBright("Darken");
+            overlay.style.backgroundColor='rgba(0,0,0,0)';
         }
     }
 
